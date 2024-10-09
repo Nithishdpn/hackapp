@@ -9,7 +9,12 @@ HackApp AI is an AI-powered application designed to assist students in managing 
 - **Reminders & Alerts**: Sends notifications and reminders for upcoming classes, deadlines, and personal tasks.
 - **Timetable Input**: Upload or create your timetable, and the AI will generate your daily/weekly schedule.
 - **Customizable**: Modify your schedule easily to fit personal preferences and non-academic activities.
-- **Analytics**: Provides insights and reports on how your time is being spent, helping to optimize productivity.
+- **Analytics**: Provides insights and reports on how your time is being spent, helping to optimize productivity
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Getting Started
 
@@ -17,10 +22,9 @@ HackApp AI is an AI-powered application designed to assist students in managing 
 
 - Node.js (v14+)
 - Git
-- Yarn or npm
+- npm
 
 ### Installation
 
 1. Clone the repository:
-   ```bash
    git clone https://github.com/yourusername/hackapp-ai.git
