@@ -50,4 +50,28 @@ function importExcel(file) {
   };
   reader.readAsArrayBuffer(file);
 }
+
+function analyzeExcelSheet(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+    
+    // Perform analysis on the JSON data
+    const analysis = json.reduce((acc, row) => {
+      // Example analysis: count occurrences of a specific value in a column
+      const value = row['ColumnName']; // Replace 'ColumnName' with the actual column name
+      if (value) {
+        acc[value] = (acc[value] || 0) + 1;
+      }
+      return acc;
+    }, {});
+
+    console.log(analysis);
+  };
+  reader.readAsArrayBuffer(file);
+}
 export default App
