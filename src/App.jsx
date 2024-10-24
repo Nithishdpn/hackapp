@@ -31,5 +31,11 @@ function App() {
     </>
   )
 }
-
+function login(username, password) {
+  if (username === 'usrname' && password === 'admin') {
+    alert('Login successful');
+  } else {
+    alert('Login failed');
+  }
+}
 export default App
