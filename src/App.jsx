@@ -74,4 +74,11 @@ function analyzeExcelSheet(file) {
   };
   reader.readAsArrayBuffer(file);
 }
+
+function exportExcel() {
+  const data = [
+    { Name: 'John Doe', Age: 30 },
+    { Name: 'Jane Doe', Age: 25 },
+
+  ];
 export default App
