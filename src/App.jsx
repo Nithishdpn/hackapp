@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import * as XLSX from 'xlsx';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -31,5 +31,47 @@ function App() {
     </>
   )
 }
+function login(username, password) {
+  if (username === 'usrname' && password === 'admin') {
+    alert('Login successful');
+  } else {
+    alert('Login failed');
+  }
+}
+function importExcel(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+    console.log(json);
+  };
+  reader.readAsArrayBuffer(file);
+}
 
+function analyzeExcelSheet(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data, { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet);
+    
+    // Perform analysis on the JSON data
+    const analysis = json.reduce((acc, row) => {
+      // Example analysis: count occurrences of a specific value in a column
+      const value = row['ColumnName']; // Replace 'ColumnName' with the actual column name
+      if (value) {
+        acc[value] = (acc[value] || 0) + 1;
+      }
+      return acc;
+    }, {});
+
+    console.log(analysis);
+  };
+  reader.readAsArrayBuffer(file);
+}
 export default App
